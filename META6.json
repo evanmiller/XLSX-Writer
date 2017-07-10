@@ -1,0 +1,15 @@
+{
+    "perl": "6.c",
+    "name": "XLSX::Writer",
+    "version": "0.1.0",
+    "description": "Generates Excel spreadsheets using the libxlsxwriter C library",
+    "authors": ["Evan Miller"],
+    "license": "MIT",
+    "provides": {
+        "XLSX::Writer" : "lib/XLSX/Writer.pm"
+    },
+    "depends": [
+        "xlsxwriter:from<native>"
+    ],
+    "source-url": "git://github.com/evanmiller/XLSX-Writer.git"
+}
