@@ -22,4 +22,7 @@ Baisc usage:
     $workbook.close();
 ```
 
+You need libxlsxwriter installed on your system; this library was tested
+against version 0.7.0.
+
 See the `t/` directory for more functions, including custom formatting.
