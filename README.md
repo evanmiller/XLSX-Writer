@@ -1,3 +1,5 @@
+[![Travis CI build status](https://travis-ci.org/evanmiller/XLSX-Writer.svg?branch=master)](https://travis-ci.org/evanmiller/XLSX-Writer)
+
 Perl 6 wrapper for libxlsxwriter
 --
 
