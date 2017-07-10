@@ -8,6 +8,5 @@ install:
     - tar xzf libxlsxwriter.tar.gz
     - cd libxlsxwriter-RELEASE_0.7.0
     - make
-    - sudo make install
-    - ls /usr/local/lib
+    - sudo cp lib/* /usr/lib
     - cd ..
