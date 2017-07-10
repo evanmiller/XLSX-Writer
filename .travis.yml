@@ -4,9 +4,9 @@ perl6:
     - '2017.04'
 
 install:
-    - cd /tmp
     - curl -o libxlsxwriter.tar.gz https://codeload.github.com/jmcnamara/libxlsxwriter/tar.gz/RELEASE_0.7.0
     - tar xzf libxlsxwriter.tar.gz
     - cd libxlsxwriter-RELEASE_0.7.0
     - make
     - sudo make install
+    - cd ..
