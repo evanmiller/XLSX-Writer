@@ -10,6 +10,8 @@ was a port of the Perl 5 library. Oh the irony.
 Baisc usage:
 
 ```perl6
+    use XLSX::Writer;
+
     my $workbook = XLSX::Writer::Workbook.new("/path/to/somewhere.xlsx");
     my $worksheet = $workbook.add-worksheet("Sheeeeeeeeet");
     $worksheet.write-value(0, 0, "Hello");
@@ -20,4 +22,4 @@ Baisc usage:
     $workbook.close();
 ```
 
-See `t/` directory for more functions, including custom formatting.
+See the `t/` directory for more functions, including custom formatting.
