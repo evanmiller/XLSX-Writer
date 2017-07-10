@@ -1,12 +1,17 @@
 language: perl6
 
 perl6:
+    - latest
+    - '2017.05'
     - '2017.04'
 
 install:
-    - curl -o libxlsxwriter.tar.gz https://codeload.github.com/jmcnamara/libxlsxwriter/tar.gz/RELEASE_0.7.0
+    - curl -o libxlsxwriter.tar.gz https://codeload.github.com/jmcnamara/libxlsxwriter/tar.gz/RELEASE_${LIBXLSXWRITER_VERSION}
     - tar xzf libxlsxwriter.tar.gz
-    - cd libxlsxwriter-RELEASE_0.7.0
+    - cd libxlsxwriter-RELEASE_${LIBXLSXWRITER_VERSION}
     - make
     - sudo cp lib/* /usr/lib
     - cd ..
+
+env:
+    - LIBXLSXWRITER_VERSION="0.7.0"
