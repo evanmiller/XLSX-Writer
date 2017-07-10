@@ -96,6 +96,8 @@ $wsx.set-tab-color(XLSX::Writer::Color($_)) for XLSX::Writer::Color.enums.values
 $wsx.set-default-row(100.0, True);
 
 is $wbx.close(), XLSX::Writer::Error::no-error;
+ok $tmpfile.IO.f;
+ok $tmpfile.IO.s > 0;
 
 done-testing;
 
