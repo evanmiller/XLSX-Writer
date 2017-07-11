@@ -53,6 +53,7 @@ is $wsx.write-blank(0, 12), XLSX::Writer::Error::no-error;
 
 is $wsx.set-row(0, 12), XLSX::Writer::Error::no-error;
 is $wsx.set-column(0, 100), XLSX::Writer::Error::no-error;
+is $wsx.set-column(2..6, 200), XLSX::Writer::Error::no-error;
 
 is $wsx.merge-range(3..4, 3..4, ""), XLSX::Writer::Error::no-error;
 is $wsx.autofilter(3..4, 3..4), XLSX::Writer::Error::no-error;

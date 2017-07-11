@@ -20,8 +20,8 @@ sub worksheet_write_boolean(XLSX::Writer::Worksheet, uint32, uint16, int32, Form
 sub worksheet_write_blank(XLSX::Writer::Worksheet, uint32, uint16, Format) returns int32 is native(LIB) {...}
 sub worksheet_set_row(XLSX::Writer::Worksheet, uint32, num64, Format) returns int32 is native(LIB) {...}
 sub worksheet_set_row_opt(XLSX::Writer::Worksheet, uint32, num64, Format, XLSX::Writer::RowColOptions) returns int32 is native(LIB) {...}
-sub worksheet_set_column(XLSX::Writer::Worksheet, uint16, num64, Format) returns int32 is native(LIB) {...}
-sub worksheet_set_column_opt(XLSX::Writer::Worksheet, uint16, num64, Format, XLSX::Writer::RowColOptions) returns int32 is native(LIB) {...}
+sub worksheet_set_column(XLSX::Writer::Worksheet, uint16, uint16, num64, Format) returns int32 is native(LIB) {...}
+sub worksheet_set_column_opt(XLSX::Writer::Worksheet, uint16, uint16, num64, Format, XLSX::Writer::RowColOptions) returns int32 is native(LIB) {...}
 sub worksheet_insert_image(XLSX::Writer::Worksheet, uint32, uint16, Str, Format) returns int32 is native(LIB) {...}
 sub worksheet_merge_range(XLSX::Writer::Worksheet, uint32, uint16, uint32, uint16, Str, Format) returns int32 is native(LIB) {...}
 sub worksheet_autofilter(XLSX::Writer::Worksheet, uint32, uint16, uint32, uint16) returns int32 is native(LIB) {...}
@@ -119,8 +119,12 @@ method set-row(UInt:D $row, Numeric $height, Format $format?, XLSX::Writer::RowC
     Error(worksheet_set_row_opt(self, $row, $height.Num, $format, $options))
 }
 
-method set-column(UInt:D $col, Numeric $width, Format $format?, XLSX::Writer::RowColOptions $options?) returns Error {
-    Error(worksheet_set_column_opt(self, $col, $width.Num, $format, $options))
+multi method set-column(UInt:D $col, Numeric $width, Format $format?, XLSX::Writer::RowColOptions $options?) returns Error {
+    Error(worksheet_set_column_opt(self, $col, $col, $width.Num, $format, $options))
+}
+
+multi method set-column(ColRange:D $cols, Numeric $width, Format $format?, XLSX::Writer::RowColOptions $options?) returns Error {
+    Error(worksheet_set_column_opt(self, $cols.min, $cols.max, $width.Num, $format, $options))
 }
 
 method insert-image(UInt:D $row, UInt:D $col, Str $filename) returns Error {
