@@ -6,10 +6,13 @@
     "authors": ["Evan Miller"],
     "license": "MIT",
     "provides": {
-        "XLSX::Writer" : "lib/XLSX/Writer.pm"
+        "XLSX::Writer" : "lib/XLSX/Writer.pm6"
     },
     "depends": [
         "xlsxwriter:from<native>"
     ],
-    "source-url": "git://github.com/evanmiller/XLSX-Writer.git"
+    "support": {
+        "source": "git://github.com/evanmiller/XLSX-Writer.git",
+        "issues": "https://github.com/evanmiller/XLSX-Writer/issues"
+    }
 }
