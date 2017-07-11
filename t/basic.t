@@ -41,13 +41,14 @@ is $wsx.write-value(1, 1, pi), XLSX::Writer::Error::no-error;
 is $wsx.write-value(0, 2, False), XLSX::Writer::Error::no-error;
 is $wsx.write-value(1, 2, True), XLSX::Writer::Error::no-error;
 
+is $wsx.write-value(0, 10, DateTime.now), XLSX::Writer::Error::no-error;
+
 is $wsx.write-formula(0, 3, "=1+2"), XLSX::Writer::Error::no-error;
 
 is $wsx.write-array-formula(0..1, 4, "=1+2"), XLSX::Writer::Error::no-error;
 is $wsx.write-array-formula(0..1, 5..6, "=1+2"), XLSX::Writer::Error::no-error;
 is $wsx.write-array-formula(0, 7..8, "=1+2"), XLSX::Writer::Error::no-error;
 is $wsx.write-array-formula(0, 9, "=1+2"), XLSX::Writer::Error::no-error;
-is $wsx.write-datetime(0, 10, DateTime.now), XLSX::Writer::Error::no-error;
 is $wsx.write-url(0, 11, "http://perl6.org/"), XLSX::Writer::Error::no-error;
 is $wsx.write-blank(0, 12), XLSX::Writer::Error::no-error;
 

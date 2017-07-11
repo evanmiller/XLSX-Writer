@@ -61,16 +61,22 @@ sub worksheet_set_tab_color(XLSX::Writer::Worksheet, int32) is native(LIB) {...}
 sub worksheet_protect(XLSX::Writer::Worksheet, Str is encoded('utf8'), Protection) is native(LIB) {...}
 sub worksheet_set_default_row(XLSX::Writer::Worksheet, num64, uint8) is native(LIB) {...}
 
-multi method write-value(UInt:D $row, UInt:D $col, Numeric $number, Format $format?) returns Error {
+multi method write-value(UInt:D $row, UInt:D $col, Numeric:D $number, Format $format?) returns Error {
     Error(worksheet_write_number(self, $row, $col, $number.Num, $format))
 }
 
-multi method write-value(UInt:D $row, UInt:D $col, Str $string, Format $format?) returns Error {
+multi method write-value(UInt:D $row, UInt:D $col, Str:D $string, Format $format?) returns Error {
     Error(worksheet_write_string(self, $row, $col, $string, $format))
 }
 
-multi method write-value(UInt:D $row, UInt:D $col, Bool $bool, Format $format?) returns Error {
+multi method write-value(UInt:D $row, UInt:D $col, Bool:D $bool, Format $format?) returns Error {
     Error(worksheet_write_boolean(self, $row, $col, $bool, $format))
+}
+
+multi method write-value(UInt:D $row, UInt:D $col, Dateish:D $date, Format $format?) returns Error {
+    my $dt = XLSX::Writer::DateTime.new(:year($date.year), :month($date.month), :day($date.day),
+            :hour($date.hour), :min($date.minute), :sec($date.second));
+    Error(worksheet_write_datetime(self, $row, $col, $dt, $format))
 }
 
 method write-formula(UInt:D $row, UInt:D $col, Str $formula, Format $format?) returns Error {
@@ -99,12 +105,6 @@ multi method write-array-formula(UInt:D $row, ColRange:D $cols, Str $formula, Fo
 
 multi method write-array-formula(RowRange:D $rows, ColRange:D $cols, Str $formula, Format $format?) returns Error {
     Error(worksheet_write_array_formula(self, $rows.min, $cols.min, $rows.max, $cols.max, $formula, $format))
-}
-
-method write-datetime(UInt:D $row, UInt:D $col, Dateish $date, Format $format?) returns Error {
-    my $dt = XLSX::Writer::DateTime.new(:year($date.year), :month($date.month), :day($date.day),
-            :hour($date.hour), :min($date.minute), :sec($date.second));
-    Error(worksheet_write_datetime(self, $row, $col, $dt, $format))
 }
 
 method write-url(UInt:D $row, UInt:D $col, Str $url, Format $format?) returns Error {
