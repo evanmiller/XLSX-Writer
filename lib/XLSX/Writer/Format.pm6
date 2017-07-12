@@ -49,18 +49,18 @@ method set-num-format(Str:D $format) { format_set_num_format(self, $format) }
 method set-num-format-index(UInt:D $index) { format_set_num_format_index(self, $index) }
 method set-unlocked() { format_set_unlocked(self) }
 method set-hidden() { format_set_hidden(self) }
-method set-align(Align:D $align) { format_set_align(self, $align) }
+method set-align(XLSX::Writer::Align:D $align) { format_set_align(self, $align) }
 method set-text-wrap() { format_set_text_wrap(self) }
 method set-indent(UInt:D $level) { format_set_indent(self, $level) }
 method set-shrink() { format_set_shrink(self) }
-method set-pattern(Pattern:D $pattern) { format_set_pattern(self, $pattern) }
+method set-pattern(XLSX::Writer::Pattern:D $pattern) { format_set_pattern(self, $pattern) }
 method set-bg-color(Color:D $color) { format_set_bg_color(self, $color) }
 method set-fg-color(Color:D $color) { format_set_fg_color(self, $color) }
-method set-border(Border:D $border) { format_set_border(self, $border) }
-method set-bottom(Border:D $border) { format_set_bottom(self, $border) }
-method set-top(Border:D $border) { format_set_top(self, $border) }
-method set-left(Border:D $border) { format_set_left(self, $border) }
-method set-right(Border:D $border) { format_set_right(self, $border) }
+method set-border(XLSX::Writer::Border:D $border) { format_set_border(self, $border) }
+method set-bottom(XLSX::Writer::Border:D $border) { format_set_bottom(self, $border) }
+method set-top(XLSX::Writer::Border:D $border) { format_set_top(self, $border) }
+method set-left(XLSX::Writer::Border:D $border) { format_set_left(self, $border) }
+method set-right(XLSX::Writer::Border:D $border) { format_set_right(self, $border) }
 method set-border-color(Color:D $color) { format_set_border_color(self, $color) }
 method set-bottom-color(Color:D $color) { format_set_bottom_color(self, $color) }
 method set-top-color(Color:D $color) { format_set_top_color(self, $color) }

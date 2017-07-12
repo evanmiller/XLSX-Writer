@@ -1,5 +1,9 @@
 use v6;
 
+need XLSX::Writer::Align;
+need XLSX::Writer::Border;
+need XLSX::Writer::Pattern;
+
 unit package XLSX::Writer;
 
 constant LIB is export = "xlsxwriter";
@@ -37,14 +41,6 @@ enum Gridlines is export <hide-all-gridlines show-screen-gridlines show-print-gr
 
 enum Underline is export <<:single(1) double single-accounting double-accounting>>;
 enum Script is export <<:superscript(1) subscript>>;
-enum Align is export <no-align left center right fill justify center-across distributed
-            vertical-top vertical-bottom vertical-center vertical-justify vertical-distributed>;
-enum Pattern is export <no-pattern solid medium-gray dark-gray light-gray
-              dark-horizontal dark-vertical dark-down dark-up dark-grid dark-trellis
-              light-horizontal light-vertical light-down light-up light-grid light-trellis
-              gray-125 gray-0625>;
-enum Border is export <no-border thin medium dashed dotted thick double-thick hair medium-dashed
-             dash-dot medium-dash-dot dash-dot-dot medium-dash-dot-dot slant-dash-dot>;
 
 
 subset RowRange of Range is export where { $_.is-int and $_.min >= 0 and $_.max < MAX_ROWS };
