@@ -30,12 +30,12 @@ method close() returns Error {
     Error(workbook_close(self))
 }
 
-method add-worksheet(Str $sheetname) returns XLSX::Writer::Worksheet {
+method add-worksheet(Str $sheetname?) returns XLSX::Writer::Worksheet {
     workbook_add_worksheet(self, $sheetname)
 }
 
 method add-format() returns Format {
-    workbook_add_format(self)
+    workbook_add_format(self);
 }
 
 method define-name(Str:D $name, Str:D $formula) returns Error {
