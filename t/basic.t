@@ -22,6 +22,9 @@ is $wbx.set-custom-property("Party starts", DateTime.now), XLSX::Writer::Error::
 my $wsx = $wbx.add-worksheet("Hello");
 ok $wsx;
 
+my $wsx2 = $wbx.add-worksheet();
+ok $wsx2;
+
 ok $wbx.get-worksheet-by-name("Hello");
 
 my $pr = XLSX::Writer::Protection.new(:no_select_locked_cells(1));
@@ -44,12 +47,13 @@ is $wsx.write-value(1, 2, True), XLSX::Writer::Error::no-error;
 is $wsx.write-value(0, 10, DateTime.now), XLSX::Writer::Error::no-error;
 
 is $wsx.write-formula(0, 3, "=1+2"), XLSX::Writer::Error::no-error;
+is $wsx.write-formula(1, 3, "=1+2", :result(3.0)), XLSX::Writer::Error::no-error;
 
 is $wsx.write-array-formula(0..1, 4, "=1+2"), XLSX::Writer::Error::no-error;
 is $wsx.write-array-formula(0..1, 5..6, "=1+2"), XLSX::Writer::Error::no-error;
 is $wsx.write-array-formula(0, 7..8, "=1+2"), XLSX::Writer::Error::no-error;
 is $wsx.write-array-formula(0, 9, "=1+2"), XLSX::Writer::Error::no-error;
-is $wsx.write-url(0, 11, "http://perl6.org/"), XLSX::Writer::Error::no-error;
+is $wsx.write-value(0, 11, "http://perl6.org/", :url), XLSX::Writer::Error::no-error;
 is $wsx.write-blank(0, 12), XLSX::Writer::Error::no-error;
 
 is $wsx.set-row(0, 12), XLSX::Writer::Error::no-error;

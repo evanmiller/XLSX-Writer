@@ -13,6 +13,7 @@ unit class XLSX::Writer::Worksheet is repr('CPointer') is export;
 sub worksheet_write_number(XLSX::Writer::Worksheet, uint32, uint16, num64, Format) returns int32 is native(LIB) {*}
 sub worksheet_write_string(XLSX::Writer::Worksheet, uint32, uint16, Str, Format) returns int32 is native(LIB) {...}
 sub worksheet_write_formula(XLSX::Writer::Worksheet, uint32, uint16, Str, Format) returns int32 is native(LIB) {...}
+sub worksheet_write_formula_num(XLSX::Writer::Worksheet, uint32, uint16, Str, Format, num64) returns int32 is native(LIB) {...}
 sub worksheet_write_array_formula(XLSX::Writer::Worksheet, uint32, uint16, uint32, uint16, Str, Format) returns int32 is native(LIB) {...}
 sub worksheet_write_datetime(XLSX::Writer::Worksheet, uint32, uint16, XLSX::Writer::DateTime, Format) returns int32 is native(LIB) {...}
 sub worksheet_write_url(XLSX::Writer::Worksheet, uint32, uint16, Str, Format) returns int32 is native(LIB) {...}
@@ -65,8 +66,12 @@ multi method write-value(UInt:D $row, UInt:D $col, Numeric:D $number, Format $fo
     Error(worksheet_write_number(self, $row, $col, $number.Num, $format))
 }
 
-multi method write-value(UInt:D $row, UInt:D $col, Str:D $string, Format $format?) returns Error {
-    Error(worksheet_write_string(self, $row, $col, $string, $format))
+multi method write-value(UInt:D $row, UInt:D $col, Str:D $string, Format $format?, Bool :$url) returns Error {
+    if $url {
+        Error(worksheet_write_url(self, $row, $col, $string, $format))
+    } else {
+        Error(worksheet_write_string(self, $row, $col, $string, $format))
+    }
 }
 
 multi method write-value(UInt:D $row, UInt:D $col, Bool:D $bool, Format $format?) returns Error {
@@ -79,13 +84,13 @@ multi method write-value(UInt:D $row, UInt:D $col, Dateish:D $date, Format $form
     Error(worksheet_write_datetime(self, $row, $col, $dt, $format))
 }
 
-method write-formula(UInt:D $row, UInt:D $col, Str $formula, Format $format?) returns Error {
-    Error(worksheet_write_formula(self, $row, $col, $formula, $format))
+method write-formula(UInt:D $row, UInt:D $col, Str $formula, Format $format?, Numeric :$result) returns Error {
+    if $result.defined {
+        Error(worksheet_write_formula_num(self, $row, $col, $formula, $format, $result.Num))
+    } else {
+        Error(worksheet_write_formula(self, $row, $col, $formula, $format))
+    }
 }
-
-# Nice error message...
-# Undeclared routine:
-#   write-array-formula used at lines 75, 79, 83, 87
 
 multi method write-array-formula(UInt:D $row, UInt:D $col, Str $formula, Format $format?) returns Error {
     self.write-array-formula($row..$row, $col..$col, $formula, $format)
@@ -105,10 +110,6 @@ multi method write-array-formula(UInt:D $row, ColRange:D $cols, Str $formula, Fo
 
 multi method write-array-formula(RowRange:D $rows, ColRange:D $cols, Str $formula, Format $format?) returns Error {
     Error(worksheet_write_array_formula(self, $rows.min, $cols.min, $rows.max, $cols.max, $formula, $format))
-}
-
-method write-url(UInt:D $row, UInt:D $col, Str $url, Format $format?) returns Error {
-    Error(worksheet_write_url(self, $row, $col, $url, $format))
 }
 
 method write-blank(UInt:D $row, UInt:D $col, Format $format?) returns Error {
