@@ -9,18 +9,18 @@ need XLSX::Writer::DocProperties;
 
 unit class XLSX::Writer::Workbook is repr('CPointer') is export;
 
-sub workbook_new(Str is encoded('utf8')) returns XLSX::Writer::Workbook is native(LIB) {...}
-sub workbook_close(XLSX::Writer::Workbook) returns int32 is native(LIB) {...}
-sub workbook_add_worksheet(XLSX::Writer::Workbook, Str is encoded('utf8')) returns XLSX::Writer::Worksheet is native(LIB) {...}
-sub workbook_add_format(XLSX::Writer::Workbook) returns Format is native(LIB) {...}
-sub workbook_set_properties(XLSX::Writer::Workbook, XLSX::Writer::DocProperties) returns int32 is native(LIB) {...}
-sub workbook_set_custom_property_string(XLSX::Writer::Workbook, Str, Str) returns int32 is native(LIB) {...}
-sub workbook_set_custom_property_number(XLSX::Writer::Workbook, Str, num64) returns int32 is native(LIB) {...}
-sub workbook_set_custom_property_boolean(XLSX::Writer::Workbook, Str, uint8) returns int32 is native(LIB) {...}
-sub workbook_set_custom_property_datetime(XLSX::Writer::Workbook, Str, XLSX::Writer::DateTime) returns int32 is native(LIB) {...}
-sub workbook_define_name(XLSX::Writer::Workbook, Str, Str) returns int32 is native(LIB) {...}
-sub workbook_get_worksheet_by_name(XLSX::Writer::Workbook, Str) returns XLSX::Writer::Worksheet is native(LIB) {...}
-sub workbook_validate_worksheet_name(XLSX::Writer::Workbook, Str) returns int32 is native(LIB) {...}
+sub workbook_new(Str is encoded('utf8')) returns XLSX::Writer::Workbook is native(LIB) {*}
+sub workbook_close(XLSX::Writer::Workbook) returns int32 is native(LIB) {*}
+sub workbook_add_worksheet(XLSX::Writer::Workbook, Str is encoded('utf8')) returns XLSX::Writer::Worksheet is native(LIB) {*}
+sub workbook_add_format(XLSX::Writer::Workbook) returns Format is native(LIB) {*}
+sub workbook_set_properties(XLSX::Writer::Workbook, XLSX::Writer::DocProperties) returns int32 is native(LIB) {*}
+sub workbook_set_custom_property_string(XLSX::Writer::Workbook, Str, Str) returns int32 is native(LIB) {*}
+sub workbook_set_custom_property_number(XLSX::Writer::Workbook, Str, num64) returns int32 is native(LIB) {*}
+sub workbook_set_custom_property_boolean(XLSX::Writer::Workbook, Str, uint8) returns int32 is native(LIB) {*}
+sub workbook_set_custom_property_datetime(XLSX::Writer::Workbook, Str, XLSX::Writer::DateTime) returns int32 is native(LIB) {*}
+sub workbook_define_name(XLSX::Writer::Workbook, Str, Str) returns int32 is native(LIB) {*}
+sub workbook_get_worksheet_by_name(XLSX::Writer::Workbook, Str) returns XLSX::Writer::Worksheet is native(LIB) {*}
+sub workbook_validate_worksheet_name(XLSX::Writer::Workbook, Str) returns int32 is native(LIB) {*}
 
 method new(Str $path) {
     workbook_new($path)

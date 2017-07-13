@@ -11,56 +11,56 @@ need XLSX::Writer::HeaderFooterOptions;
 unit class XLSX::Writer::Worksheet is repr('CPointer') is export;
 
 sub worksheet_write_number(XLSX::Writer::Worksheet, uint32, uint16, num64, Format) returns int32 is native(LIB) {*}
-sub worksheet_write_string(XLSX::Writer::Worksheet, uint32, uint16, Str, Format) returns int32 is native(LIB) {...}
-sub worksheet_write_formula(XLSX::Writer::Worksheet, uint32, uint16, Str, Format) returns int32 is native(LIB) {...}
-sub worksheet_write_formula_num(XLSX::Writer::Worksheet, uint32, uint16, Str, Format, num64) returns int32 is native(LIB) {...}
-sub worksheet_write_array_formula(XLSX::Writer::Worksheet, uint32, uint16, uint32, uint16, Str, Format) returns int32 is native(LIB) {...}
-sub worksheet_write_datetime(XLSX::Writer::Worksheet, uint32, uint16, XLSX::Writer::DateTime, Format) returns int32 is native(LIB) {...}
-sub worksheet_write_url(XLSX::Writer::Worksheet, uint32, uint16, Str, Format) returns int32 is native(LIB) {...}
-sub worksheet_write_boolean(XLSX::Writer::Worksheet, uint32, uint16, int32, Format) returns int32 is native(LIB) {...}
-sub worksheet_write_blank(XLSX::Writer::Worksheet, uint32, uint16, Format) returns int32 is native(LIB) {...}
-sub worksheet_set_row(XLSX::Writer::Worksheet, uint32, num64, Format) returns int32 is native(LIB) {...}
-sub worksheet_set_row_opt(XLSX::Writer::Worksheet, uint32, num64, Format, XLSX::Writer::RowColOptions) returns int32 is native(LIB) {...}
-sub worksheet_set_column(XLSX::Writer::Worksheet, uint16, uint16, num64, Format) returns int32 is native(LIB) {...}
-sub worksheet_set_column_opt(XLSX::Writer::Worksheet, uint16, uint16, num64, Format, XLSX::Writer::RowColOptions) returns int32 is native(LIB) {...}
-sub worksheet_insert_image(XLSX::Writer::Worksheet, uint32, uint16, Str, Format) returns int32 is native(LIB) {...}
-sub worksheet_merge_range(XLSX::Writer::Worksheet, uint32, uint16, uint32, uint16, Str, Format) returns int32 is native(LIB) {...}
-sub worksheet_autofilter(XLSX::Writer::Worksheet, uint32, uint16, uint32, uint16) returns int32 is native(LIB) {...}
-sub worksheet_activate(XLSX::Writer::Worksheet) is native(LIB) {...}
-sub worksheet_select(XLSX::Writer::Worksheet) is native(LIB) {...}
-sub worksheet_hide(XLSX::Writer::Worksheet) is native(LIB) {...}
-sub worksheet_set_first_sheet(XLSX::Writer::Worksheet) is native(LIB) {...}
-sub worksheet_freeze_panes(XLSX::Writer::Worksheet, uint32, uint16) is native(LIB) {...}
-sub worksheet_split_panes(XLSX::Writer::Worksheet, num64, num64) is native(LIB) {...}
-sub worksheet_set_selection(XLSX::Writer::Worksheet, uint32, uint16, uint32, uint16) is native(LIB) {...}
-sub worksheet_set_landscape(XLSX::Writer::Worksheet) is native(LIB) {...}
-sub worksheet_set_portrait(XLSX::Writer::Worksheet) is native(LIB) {...}
-sub worksheet_set_page_view(XLSX::Writer::Worksheet) is native(LIB) {...}
-sub worksheet_set_paper(XLSX::Writer::Worksheet, uint8) is native(LIB) {...}
-sub worksheet_set_margins(XLSX::Writer::Worksheet, num64, num64, num64, num64) is native(LIB) {...}
-sub worksheet_set_header(XLSX::Writer::Worksheet, Str) returns int32 is native(LIB) {...}
-sub worksheet_set_header_opt(XLSX::Writer::Worksheet, Str, XLSX::Writer::HeaderFooterOptions) returns int32 is native(LIB) {...}
-sub worksheet_set_footer(XLSX::Writer::Worksheet, Str) returns int32 is native(LIB) {...}
-sub worksheet_set_footer_opt(XLSX::Writer::Worksheet, Str, XLSX::Writer::HeaderFooterOptions) returns int32 is native(LIB) {...}
-sub worksheet_set_h_pagebreaks(XLSX::Writer::Worksheet, CArray[uint32]) returns int32 is native(LIB) {...}
-sub worksheet_set_v_pagebreaks(XLSX::Writer::Worksheet, CArray[uint16]) returns int32 is native(LIB) {...}
-sub worksheet_print_across(XLSX::Writer::Worksheet) is native(LIB) {...}
-sub worksheet_set_zoom(XLSX::Writer::Worksheet, uint16) is native(LIB) {...}
-sub worksheet_gridlines(XLSX::Writer::Worksheet, uint8) is native(LIB) {...}
-sub worksheet_center_horizontally(XLSX::Writer::Worksheet) is native(LIB) {...}
-sub worksheet_center_vertically(XLSX::Writer::Worksheet) is native(LIB) {...}
-sub worksheet_print_row_col_headers(XLSX::Writer::Worksheet) is native(LIB) {...}
-sub worksheet_repeat_rows(XLSX::Writer::Worksheet, uint32, uint32) returns int32 is native(LIB) {...}
-sub worksheet_repeat_columns(XLSX::Writer::Worksheet, uint16, uint16) returns int32 is native(LIB) {...}
-sub worksheet_print_area(XLSX::Writer::Worksheet, uint32, uint16, uint32, uint16) returns int32 is native(LIB) {...}
-sub worksheet_fit_to_pages(XLSX::Writer::Worksheet, uint16, uint16) is native(LIB) {...}
-sub worksheet_set_start_page(XLSX::Writer::Worksheet, uint16) is native(LIB) {...}
-sub worksheet_set_print_scale(XLSX::Writer::Worksheet, uint16) is native(LIB) {...}
-sub worksheet_right_to_left(XLSX::Writer::Worksheet) is native(LIB) {...}
-sub worksheet_hide_zero(XLSX::Writer::Worksheet) is native(LIB) {...}
-sub worksheet_set_tab_color(XLSX::Writer::Worksheet, int32) is native(LIB) {...}
-sub worksheet_protect(XLSX::Writer::Worksheet, Str is encoded('utf8'), Protection) is native(LIB) {...}
-sub worksheet_set_default_row(XLSX::Writer::Worksheet, num64, uint8) is native(LIB) {...}
+sub worksheet_write_string(XLSX::Writer::Worksheet, uint32, uint16, Str, Format) returns int32 is native(LIB) {*}
+sub worksheet_write_formula(XLSX::Writer::Worksheet, uint32, uint16, Str, Format) returns int32 is native(LIB) {*}
+sub worksheet_write_formula_num(XLSX::Writer::Worksheet, uint32, uint16, Str, Format, num64) returns int32 is native(LIB) {*}
+sub worksheet_write_array_formula(XLSX::Writer::Worksheet, uint32, uint16, uint32, uint16, Str, Format) returns int32 is native(LIB) {*}
+sub worksheet_write_datetime(XLSX::Writer::Worksheet, uint32, uint16, XLSX::Writer::DateTime, Format) returns int32 is native(LIB) {*}
+sub worksheet_write_url(XLSX::Writer::Worksheet, uint32, uint16, Str, Format) returns int32 is native(LIB) {*}
+sub worksheet_write_boolean(XLSX::Writer::Worksheet, uint32, uint16, int32, Format) returns int32 is native(LIB) {*}
+sub worksheet_write_blank(XLSX::Writer::Worksheet, uint32, uint16, Format) returns int32 is native(LIB) {*}
+sub worksheet_set_row(XLSX::Writer::Worksheet, uint32, num64, Format) returns int32 is native(LIB) {*}
+sub worksheet_set_row_opt(XLSX::Writer::Worksheet, uint32, num64, Format, XLSX::Writer::RowColOptions) returns int32 is native(LIB) {*}
+sub worksheet_set_column(XLSX::Writer::Worksheet, uint16, uint16, num64, Format) returns int32 is native(LIB) {*}
+sub worksheet_set_column_opt(XLSX::Writer::Worksheet, uint16, uint16, num64, Format, XLSX::Writer::RowColOptions) returns int32 is native(LIB) {*}
+sub worksheet_insert_image(XLSX::Writer::Worksheet, uint32, uint16, Str, Format) returns int32 is native(LIB) {*}
+sub worksheet_merge_range(XLSX::Writer::Worksheet, uint32, uint16, uint32, uint16, Str, Format) returns int32 is native(LIB) {*}
+sub worksheet_autofilter(XLSX::Writer::Worksheet, uint32, uint16, uint32, uint16) returns int32 is native(LIB) {*}
+sub worksheet_activate(XLSX::Writer::Worksheet) is native(LIB) {*}
+sub worksheet_select(XLSX::Writer::Worksheet) is native(LIB) {*}
+sub worksheet_hide(XLSX::Writer::Worksheet) is native(LIB) {*}
+sub worksheet_set_first_sheet(XLSX::Writer::Worksheet) is native(LIB) {*}
+sub worksheet_freeze_panes(XLSX::Writer::Worksheet, uint32, uint16) is native(LIB) {*}
+sub worksheet_split_panes(XLSX::Writer::Worksheet, num64, num64) is native(LIB) {*}
+sub worksheet_set_selection(XLSX::Writer::Worksheet, uint32, uint16, uint32, uint16) is native(LIB) {*}
+sub worksheet_set_landscape(XLSX::Writer::Worksheet) is native(LIB) {*}
+sub worksheet_set_portrait(XLSX::Writer::Worksheet) is native(LIB) {*}
+sub worksheet_set_page_view(XLSX::Writer::Worksheet) is native(LIB) {*}
+sub worksheet_set_paper(XLSX::Writer::Worksheet, uint8) is native(LIB) {*}
+sub worksheet_set_margins(XLSX::Writer::Worksheet, num64, num64, num64, num64) is native(LIB) {*}
+sub worksheet_set_header(XLSX::Writer::Worksheet, Str) returns int32 is native(LIB) {*}
+sub worksheet_set_header_opt(XLSX::Writer::Worksheet, Str, XLSX::Writer::HeaderFooterOptions) returns int32 is native(LIB) {*}
+sub worksheet_set_footer(XLSX::Writer::Worksheet, Str) returns int32 is native(LIB) {*}
+sub worksheet_set_footer_opt(XLSX::Writer::Worksheet, Str, XLSX::Writer::HeaderFooterOptions) returns int32 is native(LIB) {*}
+sub worksheet_set_h_pagebreaks(XLSX::Writer::Worksheet, CArray[uint32]) returns int32 is native(LIB) {*}
+sub worksheet_set_v_pagebreaks(XLSX::Writer::Worksheet, CArray[uint16]) returns int32 is native(LIB) {*}
+sub worksheet_print_across(XLSX::Writer::Worksheet) is native(LIB) {*}
+sub worksheet_set_zoom(XLSX::Writer::Worksheet, uint16) is native(LIB) {*}
+sub worksheet_gridlines(XLSX::Writer::Worksheet, uint8) is native(LIB) {*}
+sub worksheet_center_horizontally(XLSX::Writer::Worksheet) is native(LIB) {*}
+sub worksheet_center_vertically(XLSX::Writer::Worksheet) is native(LIB) {*}
+sub worksheet_print_row_col_headers(XLSX::Writer::Worksheet) is native(LIB) {*}
+sub worksheet_repeat_rows(XLSX::Writer::Worksheet, uint32, uint32) returns int32 is native(LIB) {*}
+sub worksheet_repeat_columns(XLSX::Writer::Worksheet, uint16, uint16) returns int32 is native(LIB) {*}
+sub worksheet_print_area(XLSX::Writer::Worksheet, uint32, uint16, uint32, uint16) returns int32 is native(LIB) {*}
+sub worksheet_fit_to_pages(XLSX::Writer::Worksheet, uint16, uint16) is native(LIB) {*}
+sub worksheet_set_start_page(XLSX::Writer::Worksheet, uint16) is native(LIB) {*}
+sub worksheet_set_print_scale(XLSX::Writer::Worksheet, uint16) is native(LIB) {*}
+sub worksheet_right_to_left(XLSX::Writer::Worksheet) is native(LIB) {*}
+sub worksheet_hide_zero(XLSX::Writer::Worksheet) is native(LIB) {*}
+sub worksheet_set_tab_color(XLSX::Writer::Worksheet, int32) is native(LIB) {*}
+sub worksheet_protect(XLSX::Writer::Worksheet, Str is encoded('utf8'), Protection) is native(LIB) {*}
+sub worksheet_set_default_row(XLSX::Writer::Worksheet, num64, uint8) is native(LIB) {*}
 
 multi method write-value(UInt:D $row, UInt:D $col, Numeric:D $number, Format $format?) returns Error {
     Error(worksheet_write_number(self, $row, $col, $number.Num, $format))
