@@ -56,8 +56,10 @@ is $wsx.write-array-formula(0, 9, "=1+2"), XLSX::Writer::Error::no-error;
 is $wsx.write-value(0, 11, "http://perl6.org/", :url), XLSX::Writer::Error::no-error;
 is $wsx.write-blank(0, 12), XLSX::Writer::Error::no-error;
 
-is $wsx.set-row(0, 12), XLSX::Writer::Error::no-error;
+is $wsx.set-row(0, 11), XLSX::Writer::Error::no-error;
+is $wsx.set-row(0, 12, :hidden), XLSX::Writer::Error::no-error;
 is $wsx.set-column(0, 100), XLSX::Writer::Error::no-error;
+is $wsx.set-column(1, 100.0, :hidden), XLSX::Writer::Error::no-error;
 is $wsx.set-column(2..6, 200), XLSX::Writer::Error::no-error;
 
 is $wsx.merge-range(3..4, 3..4, ""), XLSX::Writer::Error::no-error;
@@ -78,6 +80,9 @@ $wsx.set-margins(10.0, 10.0, 10.0, 10.0);
 
 is $wsx.set-header("My Header"), XLSX::Writer::Error::no-error;
 is $wsx.set-footer("My Footer"), XLSX::Writer::Error::no-error;
+
+is $wsx.set-header("My Header", :margin(10.0)), XLSX::Writer::Error::no-error;
+is $wsx.set-footer("My Footer", :margin(1e1)), XLSX::Writer::Error::no-error;
 
 is $wsx.set-h-pagebreaks([ 20, 30 ]), XLSX::Writer::Error::no-error;
 is $wsx.set-v-pagebreaks([ 40, 50 ]), XLSX::Writer::Error::no-error;

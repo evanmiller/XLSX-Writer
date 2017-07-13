@@ -116,16 +116,24 @@ method write-blank(UInt:D $row, UInt:D $col, Format $format?) returns Error {
     Error(worksheet_write_blank(self, $row, $col, $format))
 }
 
-method set-row(UInt:D $row, Numeric $height, Format $format?, XLSX::Writer::RowColOptions $options?) returns Error {
+method set-row(UInt:D $row, Numeric $height, Format $format?, Bool :$hidden) returns Error {
+    my XLSX::Writer::RowColOptions $options;
+    if $hidden.defined {
+        $options = XLSX::Writer::RowColOptions.new(:hidden($hidden));
+    }
     Error(worksheet_set_row_opt(self, $row, $height.Num, $format, $options))
 }
 
-multi method set-column(UInt:D $col, Numeric $width, Format $format?, XLSX::Writer::RowColOptions $options?) returns Error {
-    Error(worksheet_set_column_opt(self, $col, $col, $width.Num, $format, $options))
+multi method set-column(ColRange:D $cols, Numeric $width, Format $format?, Bool :$hidden) returns Error {
+    my XLSX::Writer::RowColOptions $options;
+    if $hidden.defined {
+        $options = XLSX::Writer::RowColOptions.new(:hidden($hidden));
+    }
+    Error(worksheet_set_column_opt(self, $cols.min, $cols.max, $width.Num, $format, $options))
 }
 
-multi method set-column(ColRange:D $cols, Numeric $width, Format $format?, XLSX::Writer::RowColOptions $options?) returns Error {
-    Error(worksheet_set_column_opt(self, $cols.min, $cols.max, $width.Num, $format, $options))
+multi method set-column(UInt:D $col, Numeric $width, Format $format?, Bool :$hidden) returns Error {
+    self.set-column($col .. $col, $width, $format, :$hidden)
 }
 
 method insert-image(UInt:D $row, UInt:D $col, Str $filename) returns Error {
@@ -188,11 +196,19 @@ method set-margins(Numeric $left, Numeric $right, Numeric $top, Numeric $bottom)
     worksheet_set_margins(self, $left.Num, $right.Num, $top.Num, $bottom.Num)
 }
 
-method set-header(Str $caption, XLSX::Writer::HeaderFooterOptions $options?) returns Error {
+method set-header(Str $caption, Numeric :$margin) returns Error {
+    my XLSX::Writer::HeaderFooterOptions $options;
+    if $margin.defined {
+        $options = XLSX::Writer::HeaderFooterOptions.new(:margin($margin.Num))
+    }
     Error(worksheet_set_header_opt(self, $caption, $options))
 }
 
-method set-footer(Str $caption, XLSX::Writer::HeaderFooterOptions $options?) returns Error {
+method set-footer(Str $caption, Numeric :$margin) returns Error {
+    my XLSX::Writer::HeaderFooterOptions $options;
+    if $margin.defined {
+        $options = XLSX::Writer::HeaderFooterOptions.new(:margin($margin.Num))
+    }
     Error(worksheet_set_footer_opt(self, $caption, $options))
 }
 
