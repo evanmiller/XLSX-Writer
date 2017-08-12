@@ -14,7 +14,7 @@ install:
     - tar xzf libxlsxwriter.tar.gz
     - cd libxlsxwriter-RELEASE_${LIBXLSXWRITER_VERSION}
     - make
-    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cp lib/* ~/lib; fi
+    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cp -R lib ~; fi
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo cp lib/* /usr/lib; fi
     - cd ..
 
