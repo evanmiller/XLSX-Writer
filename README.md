@@ -7,7 +7,7 @@ This is not a port of Perl 5's Excel::Writer::XLSX; rather, it's a wrapper for
 the [libxlsxwriter](https://libxlsxwriter.github.io/) C library, which itself
 was a port of the Perl 5 library. Oh the irony.
 
-Baisc usage:
+Basic usage:
 
 ```perl6
     use XLSX::Writer;
