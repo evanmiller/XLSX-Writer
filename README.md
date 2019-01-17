@@ -22,7 +22,7 @@ Basic usage:
     $worksheet.write-value(0, 4, "http://modules.perl6.org/", :url);
     $worksheet.write-formula(0, 5, "=B1*2", :result(2*pi));
 
-    my $bold-format = $worksheet.add-format();
+    my $bold-format = $workbook.add-format();
     $bold-format.set-bold();
     $worksheet.write-value(0, 6, "A bold greeting", $bold-format);
 
