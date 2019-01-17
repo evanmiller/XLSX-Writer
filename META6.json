@@ -6,7 +6,19 @@
     "authors": ["Evan Miller"],
     "license": "MIT",
     "provides": {
-        "XLSX::Writer" : "lib/XLSX/Writer.pm6"
+        "XLSX::Writer"                       : "lib/XLSX/Writer.pm6",
+        "XLSX::Writer::Common"               : "lib/XLSX/Writer/Common.pm6",
+        "XLSX::Writer::Align"                : "lib/XLSX/Writer/Align.pm6",
+        "XLSX::Writer::Border"               : "lib/XLSX/Writer/Border.pm6",
+        "XLSX::Writer::Pattern"              : "lib/XLSX/Writer/Pattern.pm6",
+        "XLSX::Writer::DateTime"             : "lib/XLSX/Writer/DateTime.pm6",
+        "XLSX::Writer::Protection"           : "lib/XLSX/Writer/Protection.pm6",
+        "XLSX::Writer::RowColOptions"        : "lib/XLSX/Writer/RowColOptions.pm6",
+        "XLSX::Writer::Workbook"             : "lib/XLSX/Writer/Workbook.pm6",
+        "XLSX::Writer::Worksheet"            : "lib/XLSX/Writer/Worksheet.pm6",
+        "XLSX::Writer::HeaderFooterOptions"  : "lib/XLSX/Writer/HeaderFooterOptions.pm6",
+        "XLSX::Writer::Format"               : "lib/XLSX/Writer/Format.pm6",
+        "XLSX::Writer::DocProperties"        : "lib/XLSX/Writer/DocProperties.pm6"
     },
     "depends": [
         "xlsxwriter:from<native>"
