@@ -19,4 +19,4 @@ install:
     - cd ..
 
 env:
-    - LIBXLSXWRITER_VERSION="0.7.0"
+    - LIBXLSXWRITER_VERSION="0.9.4"
