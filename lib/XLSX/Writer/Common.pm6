@@ -10,7 +10,7 @@ constant LIB is export = "xlsxwriter";
 constant MAX_ROWS = 1_048_576;
 constant MAX_COLS =  16_384;
 
-enum Color is export ( 
+enum Color is export (
     black => 0x1000000,
     blue => 0x0000FF,
     brown => 0x800000,
@@ -29,13 +29,17 @@ enum Color is export (
     yellow => 0xFFFF00
 );
 
-enum Error is export <no-error memory-malloc-failed creating-xlsx-file creating-tmpfile
-            zip-file-operation zip-file-add zip-close
-            null-parameter-ignored parameter-validation
-            sheetname-length-exceeded invalid-sheetname-character sheetname-already-used
-            string-length-exceeded-128 string-length-exceeded-255 string-length-exceeded-max
-            shared-string-index-not-found worksheet-index-out-of-range
-            max-number-urls-exceeded image-dimensions>;
+enum Error is export <
+    no-error                       memory-malloc-failed              creating-xlsx-file
+    creating-tmpfile               reading-tmpfile                   zip-file-operation
+    zip-parameter-error            zip-bad-file                      zip-internal-error
+    zip-file-add                   zip-close                         feature-not-supported
+    null-parameter-ignored         parameter-validation              sheetname-length-exceeded
+    invalid-sheetname-character    sheetname-start-end-apostrophe    sheetname-already-used
+    string-length-exceeded-32      string-length-exceeded-128        string-length-exceeded-255
+    string-length-exceeded-max     shared-string-index-not-found     worksheet-index-out-of-range
+    max-url-length-exceeded        max-number-urls-exceeded          image-dimensions
+>;
 
 enum Gridlines is export <hide-all-gridlines show-screen-gridlines show-print-gridlines show-all-gridlines>;
 
@@ -45,4 +49,3 @@ enum Script is export <<:superscript(1) subscript>>;
 
 subset RowRange of Range is export where { $_.is-int and $_.min >= 0 and $_.max < MAX_ROWS };
 subset ColRange of Range is export where { $_.is-int and $_.min >= 0 and $_.max < MAX_COLS };
-

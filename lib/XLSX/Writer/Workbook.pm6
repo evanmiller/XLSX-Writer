@@ -20,7 +20,7 @@ sub workbook_set_custom_property_boolean(XLSX::Writer::Workbook, Str, uint8) ret
 sub workbook_set_custom_property_datetime(XLSX::Writer::Workbook, Str, XLSX::Writer::DateTime) returns int32 is native(LIB) {*}
 sub workbook_define_name(XLSX::Writer::Workbook, Str, Str) returns int32 is native(LIB) {*}
 sub workbook_get_worksheet_by_name(XLSX::Writer::Workbook, Str) returns XLSX::Writer::Worksheet is native(LIB) {*}
-sub workbook_validate_worksheet_name(XLSX::Writer::Workbook, Str) returns int32 is native(LIB) {*}
+sub workbook_validate_sheet_name(XLSX::Writer::Workbook, Str) returns int32 is native(LIB) {*}
 
 method new(Str $path) {
     workbook_new($path)
@@ -47,7 +47,7 @@ method get-worksheet-by-name(Str:D $name) returns XLSX::Writer::Worksheet {
 }
 
 method validate-worksheet-name(Str:D $name) returns Error {
-    Error(workbook_validate_worksheet_name(self, $name))
+    Error(workbook_validate_sheet_name(self, $name))
 }
 
 method set-properties(XLSX::Writer::DocProperties $properties) returns Error {
